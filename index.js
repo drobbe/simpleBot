@@ -8,10 +8,11 @@ const {
 const path = require("path");
 
 const userSounds = {
-  "drobbe.": "elio.mp3", // Reemplaza USER_ID_1 con el ID del usuario
+  //   "drobbe.": "elio.mp3", // Reemplaza USER_ID_1 con el ID del usuario
+  //   hunterobot: "kratek.mp3", // Otro usuario más
   "⎝kratek ᵛᵉ⎠": "kratek.mp3", // Otro usuario
-  gastaclaux: "kratek.mp3", // Otro usuario más
-  hunterobot: "kratek.mp3", // Otro usuario más
+  gastaclaux: "elio.mp3", // Otro usuario más
+  sazerac: "campanas.mp3", // Otro usuario más
 };
 
 const client = new Client({
