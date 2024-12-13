@@ -1,3 +1,7 @@
+const express = require("express");
+const app = express();
+const port = 3000;
+
 const { Client, GatewayIntentBits, Events } = require("discord.js");
 const {
   joinVoiceChannel,
@@ -78,4 +82,12 @@ client.on("voiceStateUpdate", (oldState, newState) => {
       console.error("Error connecting to the voice channel:", err);
     }
   }
+});
+
+app.get("/", (req, res) => {
+  res.send("Bot arriaba");
+});
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`);
 });
