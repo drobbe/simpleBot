@@ -85,9 +85,21 @@ client.on("voiceStateUpdate", (oldState, newState) => {
 });
 
 app.get("/", (req, res) => {
-  res.send("Bot arriaba");
+  res.send("Bot arriba");
 });
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
+
+setInterval(async () => {
+  try {
+    const res = await fetch("https://dsadas-d37k.onrender.com/");
+
+    const response = await res.json();
+
+    console.log("Se ha realizado la Hidratación");
+  } catch (err) {
+    console.log(err.message); //can be console.error
+  }
+}, 60 * 10);
