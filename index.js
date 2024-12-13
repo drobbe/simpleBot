@@ -16,7 +16,7 @@ const userSounds = {
   //   hunterobot: "kratek.mp3", // Otro usuario más
   "⎝kratek ᵛᵉ⎠": "kratek.mp3", // Otro usuario
   gastaclaux: "elio.mp3", // Otro usuario más
-  sazerac: "campanas.mp3", // Otro usuario más
+  sazecj: "campanas.mp3", // Otro usuario más
 };
 
 const client = new Client({
@@ -51,7 +51,7 @@ client.on("voiceStateUpdate", (oldState, newState) => {
     const userTag = newState.member.user.tag;
 
     console.log(`${userTag} joined a voice channel.`);
-
+    sazecj;
     const sound = userSounds[userTag];
 
     if (!sound) return;
