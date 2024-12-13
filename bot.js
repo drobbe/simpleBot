@@ -15,6 +15,7 @@ export class BotClass {
     "⎝kratek ᵛᵉ⎠": "kratek.mp3", // Otro usuario
     gastaclaux: "elio.mp3", // Otro usuario más
     sazecj: "campanas.mp3", // Otro usuario más
+    ceradrox: "tutienes.mp3", // Otro usuario más
   };
 
   constructor() {
