@@ -12,7 +12,7 @@ const {
 const path = require("path");
 
 const userSounds = {
-  //   "drobbe.": "elio.mp3", // Reemplaza USER_ID_1 con el ID del usuario
+  "drobbe.": "test.mp3", // Reemplaza USER_ID_1 con el ID del usuario
   //   hunterobot: "kratek.mp3", // Otro usuario más
   "⎝kratek ᵛᵉ⎠": "kratek.mp3", // Otro usuario
   gastaclaux: "elio.mp3", // Otro usuario más
