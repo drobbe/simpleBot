@@ -51,7 +51,7 @@ client.on("voiceStateUpdate", (oldState, newState) => {
     const userTag = newState.member.user.tag;
 
     console.log(`${userTag} joined a voice channel.`);
-    sazecj;
+
     const sound = userSounds[userTag];
 
     if (!sound) return;
