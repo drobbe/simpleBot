@@ -13,7 +13,7 @@ export class BotClass {
     "drobbe.": "test.mp3", // Reemplaza USER_ID_1 con el ID del usuario
     hunterobot: "venao.mp3", // Otro usuario más
     "⎝kratek ᵛᵉ⎠": "kratek.mp3", // Otro usuario
-    gastaclaux: "elio.mp3", // Otro usuario más
+    gastaclaus: "elio.mp3", // Otro usuario más
     sazecj: "campanas.mp3", // Otro usuario más
     ceradrix: "tutienes.mp3", // Otro usuario más
     alexkiller5115: "mate.mp3", // Otro usuario más
