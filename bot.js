@@ -10,7 +10,7 @@ const __dirname = path.resolve();
 
 export class BotClass {
   userSounds = {
-    "drobbe.": "test.mp3", // Reemplaza USER_ID_1 con el ID del usuario
+    "drobbe.": "peru.mp3", // Reemplaza USER_ID_1 con el ID del usuario
     hunterobot: "venao.mp3", // Otro usuario más
     "⎝kratek ᵛᵉ⎠": "kratek.mp3", // Otro usuario
     gastaclaus: "elio.mp3", // Otro usuario más
