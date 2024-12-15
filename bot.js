@@ -12,7 +12,7 @@ export class BotClass {
   userSounds = {
     "drobbe.": "peru.mp3", // Reemplaza USER_ID_1 con el ID del usuario
     hunterobot: "venao.mp3", // Otro usuario más
-    "⎝kratek ᵛᵉ⎠": "kratek.mp3", // Otro usuario
+    nova_kratek: "kratek.mp3", // Otro usuario
     gastaclaus: "elio.mp3", // Otro usuario más
     sazecj: "campanas.mp3", // Otro usuario más
     ceradrix: "tutienes.mp3", // Otro usuario más
