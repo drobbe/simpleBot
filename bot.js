@@ -14,12 +14,13 @@ export class BotClass {
     hunterobot: "venao.mp3", // Otro usuario más
     nova_kratek: "kratek.mp3", // Otro usuario
     gastaclaus: "elio.mp3", // Otro usuario más
-    sazecj: "campanas.mp3", // Otro usuario más
+    sazecj: "bruja.mp3", // Otro usuario más
     ceradrix: "tutienes.mp3", // Otro usuario más
     alexkiller5115: "mate.mp3", // Otro usuario más
   };
 
   constructor() {
+    this.isPlaying = false;
     this.client = new Client({
       intents: 53608447,
     });
@@ -76,8 +77,10 @@ export class BotClass {
 
             player.play(resource);
             connection.subscribe(player);
+            this.isPlaying = true;
 
             player.on("idle", () => {
+              this.isPlaying = false;
               connection.destroy(); // Salir del canal tras reproducir el sonido
             });
           });
