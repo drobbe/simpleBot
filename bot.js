@@ -17,6 +17,7 @@ export class BotClass {
     sazecj: "bruja.mp3", // Otro usuario más
     ceradrix: "tutienes.mp3", // Otro usuario más
     alexkiller5115: "mate.mp3", // Otro usuario más
+    "werefol.": "mate.mp3", // Otro usuario más
   };
 
   constructor() {
