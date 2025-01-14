@@ -10,14 +10,15 @@ const __dirname = path.resolve();
 
 export class BotClass {
   userSounds = {
-    "drobbe.": "peru.mp3", // Reemplaza USER_ID_1 con el ID del usuario
-    hunterobot: "venao.mp3", // Otro usuario más
-    nova_kratek: "kratek.mp3", // Otro usuario
-    gastaclaus: "elio.mp3", // Otro usuario más
-    sazecj: "bruja.mp3", // Otro usuario más
-    ceradrix: "tutienes.mp3", // Otro usuario más
-    alexkiller5115: "mate.mp3", // Otro usuario más
-    "werefol.": "jalabola.mp3", // Otro usuario más
+    "drobbe.": "peru.mp3",
+    hunterobot: "venao.mp3",
+    nova_kratek: "kratek.mp3",
+    gastaclaus: "elio.mp3",
+    sazecj: "bruja.mp3",
+    ceradrix: "tutienes.mp3",
+    alexkiller5115: "mate.mp3",
+    "werefol.": "jalabola.mp3",
+    blokkci: "nacho.mp3",
   };
 
   constructor() {
