@@ -5,9 +5,14 @@ const port = 3000;
 const mamCulBot = new BotClass();
 
 mamCulBot.start();
+
+app.get("/play", (req, res) => {
+  res.send({ message: "Bot play" });
+  mamCulBot.playRandomSoundInRandomChannel();
+});
+
 app.get("/", (req, res) => {
   res.send({ message: "Bot arriba" });
-  mamCulBot.playRandomSoundInRandomChannel();
 });
 
 app.listen(port, () => {});
