@@ -8,7 +8,7 @@ import {
 import { ChannelType, Client, Events, Guild, VoiceState } from "discord.js";
 import path from "path";
 
-import * as humanTime from "humanize-time";
+import ms from "ms";
 
 export class BotClass {
   isPlaying = false;
@@ -123,7 +123,7 @@ export class BotClass {
     const maxMs = 1 * 60 * 60 * 1000 * 3;
     const interval = Math.floor(Math.random() * (maxMs - minMs + 1)) + minMs;
 
-    console.log(`El proximo sonido sera en ${humanTime(interval)}`);
+    console.log(`El proximo sonido sera en ${ms(interval)}`);
 
     if (guild) {
       setTimeout(() => {
