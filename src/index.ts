@@ -7,11 +7,10 @@ const mamCulBot = new BotClass();
 mamCulBot.start();
 app.get("/", (req, res) => {
   res.send({ message: "Bot arriba" });
-});
-
-app.listen(port, () => {
   mamCulBot.playRandomSoundInRandomChannel();
 });
+
+app.listen(port, () => {});
 
 setInterval(async () => {
   try {
