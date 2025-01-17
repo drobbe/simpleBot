@@ -5,7 +5,7 @@ import {
   joinVoiceChannel,
   VoiceConnectionStatus,
 } from "@discordjs/voice";
-import { ChannelType, Client, Events, Guild, VoiceState } from "discord.js";
+import { ChannelType, Client, Events, VoiceState } from "discord.js";
 import path from "path";
 
 import ms from "ms";
@@ -138,6 +138,7 @@ export class BotClass {
         console.log("El bot no está en ningún servidor.");
         return;
       }
+
       const voiceChannels = guild.channels.cache.filter((channel) => {
         return (
           channel.type === ChannelType.GuildVoice &&
