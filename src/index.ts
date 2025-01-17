@@ -2,7 +2,9 @@ import express from "express";
 import { BotClass } from "./bot";
 const app = express();
 const port = 3000;
+const mamCulBot = new BotClass();
 
+mamCulBot.start();
 app.get("/", (req, res) => {
   res.send({ message: "Bot arriba" });
 });
@@ -22,7 +24,3 @@ setInterval(async () => {
     console.log(err);
   }
 }, 1000 * 60 * 10);
-
-const mamCulBot = new BotClass();
-
-mamCulBot.start();

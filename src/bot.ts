@@ -118,25 +118,26 @@ export class BotClass {
 
   nextRandomSound() {
     // Obtener el servidor (guild) donde deseas que funcione
-    const guild = this.client.guilds.cache.first(); // Cambia esto si tienes múltiples servidores
+
     const minMs = (1 * 60 * 60 * 1000) / 2;
     const maxMs = 1 * 60 * 60 * 1000 * 3;
     const interval = Math.floor(Math.random() * (maxMs - minMs + 1)) + minMs;
 
     console.log(`El proximo sonido sera en ${ms(interval)}`);
 
-    if (guild) {
-      setTimeout(() => {
-        this.playRandomSoundInRandomChannel(guild);
-        this.nextRandomSound();
-      }, interval);
-    } else {
-      console.log("El bot no está en ningún servidor.");
-    }
+    setTimeout(() => {
+      this.playRandomSoundInRandomChannel();
+      this.nextRandomSound();
+    }, interval);
   }
 
-  async playRandomSoundInRandomChannel(guild: Guild) {
+  async playRandomSoundInRandomChannel() {
     try {
+      const guild = this.client.guilds.cache.first();
+      if (!guild) {
+        console.log("El bot no está en ningún servidor.");
+        return;
+      }
       const voiceChannels = guild.channels.cache.filter((channel) => {
         return (
           channel.type === ChannelType.GuildVoice &&
