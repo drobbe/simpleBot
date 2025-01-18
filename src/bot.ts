@@ -90,7 +90,7 @@ export class BotClass {
               const player = createAudioPlayer();
               const SOUND_PATH = path.join(
                 __dirname,
-                `sounds/${userSound.sound}.mp3`
+                `../sounds/${userSound.sound}.mp3`
               );
 
               console.log({ SOUND_PATH });
@@ -166,7 +166,7 @@ export class BotClass {
       connection.once(VoiceConnectionStatus.Ready, () => {
         console.log("Connected to the voice channel!");
         const player = createAudioPlayer();
-        const SOUND_PATH = path.join(__dirname, `sounds/grito.mp3`);
+        const SOUND_PATH = path.join(__dirname, `../sounds/grito.mp3`);
 
         console.log({ SOUND_PATH });
         const resource = createAudioResource(SOUND_PATH);
