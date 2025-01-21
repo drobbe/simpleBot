@@ -119,8 +119,8 @@ export class BotClass {
   nextRandomSound() {
     // Obtener el servidor (guild) donde deseas que funcione
 
-    const minMs = (1 * 60 * 60 * 1000) / 2;
-    const maxMs = 1 * 60 * 60 * 1000 * 3;
+    const minMs = 1 * 60 * 60 * 1000 * 3;
+    const maxMs = 1 * 60 * 60 * 1000 * 12;
     const interval = Math.floor(Math.random() * (maxMs - minMs + 1)) + minMs;
 
     console.log(`El proximo sonido sera en ${ms(interval)}`);
