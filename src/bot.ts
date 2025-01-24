@@ -5,10 +5,19 @@ import {
   joinVoiceChannel,
   VoiceConnectionStatus,
 } from "@discordjs/voice";
-import { ChannelType, Client, Events, VoiceState } from "discord.js";
+import {
+  Channel,
+  ChannelType,
+  Client,
+  Events,
+  Guild,
+  VoiceState,
+} from "discord.js";
 import path from "path";
 
 import ms from "ms";
+import { channel } from "diagnostics_channel";
+import { error } from "console";
 
 export class BotClass {
   isPlaying = false;
@@ -157,35 +166,73 @@ export class BotClass {
       if (randomChannel === undefined)
         return console.log("No hay canales de voz en este servidor.");
 
-      // Unirse al canal de voz
-      const connection = joinVoiceChannel({
-        channelId: randomChannel.id,
-        guildId: guild.id,
-        adapterCreator: guild.voiceAdapterCreator,
-      });
-      connection.once(VoiceConnectionStatus.Ready, () => {
-        console.log("Connected to the voice channel!");
-        const player = createAudioPlayer();
-        const SOUND_PATH = path.join(__dirname, `../sounds/grito.mp3`);
-
-        console.log({ SOUND_PATH });
-        const resource = createAudioResource(SOUND_PATH);
-
-        this.isPlaying = true;
-        player.play(resource);
-
-        connection.subscribe(player);
-
-        player.on(AudioPlayerStatus.Idle, () => {
-          connection.destroy();
-          console.log(
-            "Reproducción finalizada y desconectado del canal de voz."
-          );
-        });
-      });
+      this.playSound({ channel: randomChannel, guild: guild, sound: "grito" });
     } catch (error) {
       console.error("Error al reproducir el sonido:", error);
     }
     // Obtener todos los canales de voz en el servidor
   }
+
+  public async getGuildVoiceChanel() {
+    const guild = this.client.guilds.cache.first();
+    if (!guild) {
+      throw new Error("El bot no está en ningún servidor.");
+    }
+
+    const voiceChannels = guild.channels.cache.filter((channel) => {
+      return (
+        channel.type === ChannelType.GuildVoice &&
+        channel.members.size > 0 &&
+        channel.name !== "AFK"
+      );
+    });
+
+    if (voiceChannels.size === 0) {
+      throw new Error("No hay canales de voz en este servidor.");
+    }
+
+    const randomChannel = voiceChannels.random() as Channel;
+
+    return { guild: guild, channel: randomChannel };
+  }
+
+  public playSound(data: playSoundPameters) {
+    const { channel, guild, sound } = data;
+    if (this.isPlaying) return;
+
+    const connection = joinVoiceChannel({
+      channelId: channel.id,
+      guildId: guild.id,
+      adapterCreator: guild.voiceAdapterCreator,
+    });
+    connection.once(VoiceConnectionStatus.Ready, () => {
+      console.log("Connected to the voice channel!");
+      const player = createAudioPlayer();
+      const SOUND_PATH = path.join(__dirname, `../sounds/${sound}.mp3`);
+
+      console.log({ SOUND_PATH });
+      const resource = createAudioResource(SOUND_PATH);
+
+      this.isPlaying = true;
+      player.play(resource);
+
+      connection.subscribe(player);
+
+      player.on(AudioPlayerStatus.Idle, () => {
+        connection.destroy();
+        this.isPlaying = false;
+        console.log("Reproducción finalizada y desconectado del canal de voz.");
+      });
+    });
+  }
+}
+
+interface UserSound {
+  user: string;
+  sound: string;
+}
+interface playSoundPameters {
+  guild: Guild;
+  channel: Channel;
+  sound: string;
 }
