@@ -17,7 +17,7 @@ app.get("/pum", async (req, res) => {
   mamCulBot.playSound({
     channel: data.channel,
     guild: data.guild,
-    sound: "boom",
+    sound: "grenade",
   });
 });
 
