@@ -10,14 +10,14 @@ app.get("/play", (req, res) => {
   res.send({ message: "Bot play" });
   mamCulBot.playRandomSoundInRandomChannel();
 });
-app.get("/play", async (req, res) => {
+app.get("/pum", async (req, res) => {
   res.send({ message: "Bot play Granade" });
   const data = await mamCulBot.getGuildVoiceChanel();
 
   mamCulBot.playSound({
     channel: data.channel,
     guild: data.guild,
-    sound: "grenade",
+    sound: "boom",
   });
 });
 
