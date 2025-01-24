@@ -16,8 +16,6 @@ import {
 import path from "path";
 
 import ms from "ms";
-import { channel } from "diagnostics_channel";
-import { error } from "console";
 
 export class BotClass {
   isPlaying = false;
