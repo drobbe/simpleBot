@@ -5,6 +5,7 @@ import {
   joinVoiceChannel,
   VoiceConnectionStatus,
 } from "@discordjs/voice";
+
 import {
   Channel,
   ChannelType,
@@ -17,11 +18,21 @@ import path from "path";
 
 import ms from "ms";
 
+interface UserSound {
+  user: string;
+  sound: string;
+}
+interface PlaySoundPameters {
+  guild: Guild;
+  channel: Channel;
+  sound: string;
+}
+
 export class BotClass {
   isPlaying = false;
   client: Client;
 
-  userSounds = [
+  userSounds: UserSound[] = [
     { user: "drobbe.", sound: "peru" },
     { user: "hunterobot", sound: "venao" },
     { user: "nova_kratek", sound: "kratek" },
@@ -194,7 +205,7 @@ export class BotClass {
     return { guild: guild, channel: randomChannel };
   }
 
-  public playSound(data: playSoundPameters) {
+  public playSound(data: PlaySoundPameters) {
     const { channel, guild, sound } = data;
     if (this.isPlaying) return;
 
@@ -223,14 +234,4 @@ export class BotClass {
       });
     });
   }
-}
-
-interface UserSound {
-  user: string;
-  sound: string;
-}
-interface playSoundPameters {
-  guild: Guild;
-  channel: Channel;
-  sound: string;
 }
