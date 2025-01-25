@@ -206,32 +206,38 @@ export class BotClass {
   }
 
   public playSound(data: PlaySoundPameters) {
-    const { channel, guild, sound } = data;
-    if (this.isPlaying) return;
+    try {
+      const { channel, guild, sound } = data;
+      if (this.isPlaying) return;
 
-    const connection = joinVoiceChannel({
-      channelId: channel.id,
-      guildId: guild.id,
-      adapterCreator: guild.voiceAdapterCreator,
-    });
-    connection.once(VoiceConnectionStatus.Ready, () => {
-      console.log("Connected to the voice channel!");
-      const player = createAudioPlayer();
-      const SOUND_PATH = path.join(__dirname, `../sounds/${sound}.mp3`);
-
-      console.log({ SOUND_PATH });
-      const resource = createAudioResource(SOUND_PATH);
-
-      this.isPlaying = true;
-      player.play(resource);
-
-      connection.subscribe(player);
-
-      player.on(AudioPlayerStatus.Idle, () => {
-        connection.destroy();
-        this.isPlaying = false;
-        console.log("Reproducción finalizada y desconectado del canal de voz.");
+      const connection = joinVoiceChannel({
+        channelId: channel.id,
+        guildId: guild.id,
+        adapterCreator: guild.voiceAdapterCreator,
       });
-    });
+      connection.once(VoiceConnectionStatus.Ready, () => {
+        console.log("Connected to the voice channel!");
+        const player = createAudioPlayer();
+        const SOUND_PATH = path.join(__dirname, `../sounds/${sound}.mp3`);
+
+        console.log({ SOUND_PATH });
+        const resource = createAudioResource(SOUND_PATH);
+
+        this.isPlaying = true;
+        player.play(resource);
+
+        connection.subscribe(player);
+
+        player.on(AudioPlayerStatus.Idle, () => {
+          connection.destroy();
+          this.isPlaying = false;
+          console.log(
+            "Reproducción finalizada y desconectado del canal de voz."
+          );
+        });
+      });
+    } catch (error) {
+      console.log("Error al reproducir el sonido:", error);
+    }
   }
 }
