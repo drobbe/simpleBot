@@ -22,7 +22,7 @@ interface UserSound {
   user: string;
   sound: string;
 }
-interface PlaySoundPameters {
+interface 1PlaySoundPameters {
   guild: Guild;
   channel: Channel;
   sound: string;
@@ -95,37 +95,14 @@ export class BotClass {
 
           if (!userSound) return;
           try {
-            // Unirse al canal de voz
-            const connection = joinVoiceChannel({
-              channelId: newState.channel.id,
-              guildId: newState.guild.id,
-              adapterCreator: newState.guild.voiceAdapterCreator,
-            });
 
-            // Reproducir sonido al estar listo
-            connection.once(VoiceConnectionStatus.Ready, () => {
-              console.log("Connected to the voice channel!");
-              const player = createAudioPlayer();
-              const SOUND_PATH = path.join(
-                __dirname,
-                `../sounds/${userSound.sound}.mp3`
-              );
-
-              console.log({ SOUND_PATH });
-              const resource = createAudioResource(SOUND_PATH);
-
-              this.isPlaying = true;
-              player.play(resource);
-
-              connection.subscribe(player);
-
-              player.on(AudioPlayerStatus.Idle, () => {
-                connection.destroy();
-                console.log(
-                  "Reproducción finalizada y desconectado del canal de voz."
-                );
-              });
-            });
+            this.playSound({
+              channel: newState.channel,
+              guild: newState.guild,
+              sound: userSound.sound,
+            })
+     
+           
           } catch (err) {
             console.error("Error connecting to the voice channel:", err);
           }
@@ -237,7 +214,7 @@ export class BotClass {
         });
       });
     } catch (error) {
-      console.log("Error al reproducir el sonido:", error);
+      console.error("Error al reproducir el sonido:", error);
     }
   }
 }

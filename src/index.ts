@@ -11,14 +11,18 @@ app.get("/play", (req, res) => {
   mamCulBot.playRandomSoundInRandomChannel();
 });
 app.get("/pum", async (req, res) => {
-  res.send({ message: "Bot play Granade" });
-  const data = await mamCulBot.getGuildVoiceChanel();
-
-  mamCulBot.playSound({
-    channel: data.channel,
-    guild: data.guild,
-    sound: "grenade",
-  });
+  try {
+    res.send({ message: "Bot play Granade" });
+    const data = await mamCulBot.getGuildVoiceChanel();
+    console.log(data);
+    mamCulBot.playSound({
+      channel: data.channel,
+      guild: data.guild,
+      sound: "grenade",
+    });
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 app.get("/", (req, res) => {
