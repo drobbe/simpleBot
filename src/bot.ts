@@ -22,7 +22,7 @@ interface UserSound {
   user: string;
   sound: string;
 }
-interface 1PlaySoundPameters {
+interface PlaySoundPameters {
   guild: Guild;
   channel: Channel;
   sound: string;
@@ -95,14 +95,11 @@ export class BotClass {
 
           if (!userSound) return;
           try {
-
             this.playSound({
               channel: newState.channel,
               guild: newState.guild,
               sound: userSound.sound,
-            })
-     
-           
+            });
           } catch (err) {
             console.error("Error connecting to the voice channel:", err);
           }
@@ -197,7 +194,6 @@ export class BotClass {
         const player = createAudioPlayer();
         const SOUND_PATH = path.join(__dirname, `../sounds/${sound}.mp3`);
 
-        console.log({ SOUND_PATH });
         const resource = createAudioResource(SOUND_PATH);
 
         this.isPlaying = true;
