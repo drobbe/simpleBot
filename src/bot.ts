@@ -33,7 +33,7 @@ export class BotClass {
   client: Client;
 
   userSounds: UserSound[] = [
-    { user: "drobbe.", sound: "peru" },
+    { user: "drobbe.", sound: "jesus" },
     { user: "hunterobot", sound: "venao" },
     { user: "nova_kratek", sound: "kratek" },
     { user: "gastaclaus", sound: "elio" },
@@ -59,7 +59,7 @@ export class BotClass {
   listenEvents() {
     this.client.once("ready", () => {
       console.log(`Bot conectado como ${this.client.user?.tag}`);
-      this.nextRandomSound();
+      // this.nextRandomSound();
     });
 
     this.client.on("ready", async () => {
