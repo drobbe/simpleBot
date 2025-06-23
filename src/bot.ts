@@ -36,7 +36,7 @@ export class BotClass {
     { user: "drobbe.", sound: "jesus" },
     { user: "hunterobot", sound: "venao" },
     { user: "nova_kratek", sound: "kratek" },
-    { user: "gastaclaus", sound: "elio" },
+    { user: "gastaclaus", sound: "mariangela" },
     { user: "sazecj", sound: "bruja" },
     { user: "ceradrix", sound: "tutienes" },
     { user: "alexkiller5115", sound: "mate" },
